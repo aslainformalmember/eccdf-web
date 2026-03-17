@@ -3,82 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欧中合作发展基金会 - 让世界看见中国非遗</title>
+    <title>欧中合作发展基金会 - ECCDF</title>
+    <!-- 引入 Tailwind Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // 配置自定义主题颜色
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'eccdf-blue': '#0F172A',
-                        'eccdf-gold': '#F59E0B',
+                        'eccdf-blue': '#0a192f', // 深蓝基调
+                        'eccdf-gold': '#d4af37', // 金色点缀
                     }
                 }
             }
         }
     </script>
     <style>
+        /* 使用标准 CSS 替代 @apply */
         .hero-bg-custom {
-            /* 确保图片文件名与仓库中的一致 */
-            background-image: url('image_f8569d.png');
+            background-image: url('https://images.unsplash.com/photo-1565426965680-442b71903012?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        /* 你的遮罩代码层 */
         .hero-bg-custom::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 25, 47, 0.9) 0%,
+                rgba(10, 25, 47, 0.7) 100%
+            );
             z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 10;
-            text-align: center;
-            color: white;
         }
 
-        /* 语言切换按钮样式 */
-        .lang-btn.active { 
-            color: #F59E0B;
-            font-weight: bold;
-            border-bottom: 2px solid #F59E0B;
+        /* 兼容方案：使用标准 CSS 定义激活状态 */
+        .lang-btn-active { 
+            color: #d4af37 !important; 
+            font-weight: 700 !important;
+            border-bottom: 2px solid #d4af37;
         }
     </style>
 </head>
-<body>
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md px-6 py-4 flex justify-between items-center shadow-sm">
-        <div class="flex items-center space-x-2">
-            <span class="font-bold text-xl text-eccdf-blue">欧中合作发展基金会</span>
-        </div>
-        <div class="flex space-x-4 items-center">
-            <button class="lang-btn active">ZH</button>
-            <button class="lang-btn">EN</button>
-            <button class="lang-btn">HU</button>
-            <button class="bg-eccdf-blue text-white px-4 py-2 rounded-md">联系我们</button>
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-eccdf-blue rounded-full flex items-center justify-center text-white font-bold text-xl border-2 border-eccdf-gold">EC</div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg text-eccdf-blue leading-tight" data-key="nav_title">欧中合作发展基金会</span>
+                    <span class="text-xs text-slate-500 tracking-widest">Europe China Cooperation and Development Foundation</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-6">
+                <div class="flex bg-slate-100 rounded-full px-1 py-1 text-sm border border-slate-200">
+                    <button onclick="switchLang('zh')" id="btn-zh" class="lang-btn lang-btn-active px-4 py-1.5 rounded-full transition">中文</button>
+                    <button onclick="switchLang('en')" id="btn-en" class="lang-btn px-4 py-1.5 rounded-full transition">EN</button>
+                    <button onclick="switchLang('hu')" id="btn-hu" class="lang-btn px-4 py-1.5 rounded-full transition">HU</button>
+                </div>
+                <button class="bg-eccdf-blue text-white px-7 py-2.5 rounded-full hover:bg-slate-800 transition shadow-md text-sm font-medium" data-key="nav_contact">联系我们</button>
+            </div>
         </div>
     </nav>
 
-    <section class="hero-bg-custom">
-        <div class="hero-content px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">让世界看见中国非遗 [cite: 1]</h1>
-            <p class="text-xl md:text-2xl text-eccdf-gold mb-8">—— 构建中国非遗走向欧洲的新平台 [cite: 2]</p>
-            <p class="max-w-2xl mx-auto text-slate-300 mb-10">
-                致力于推动中国与欧洲在文化、教育、科技及经贸领域的合作交流 [cite: 8]。
+    <section class="hero-bg-custom h-screen flex items-center justify-center text-center text-white px-4">
+        <div class="hero-content max-w-5xl">
+            <div class="w-20 h-1 bg-eccdf-gold mx-auto mb-8 rounded-full"></div>
+            
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tight" data-key="hero_h1">
+                让世界看见<span class="text-eccdf-gold">中国非遗</span>
+            </h1>
+            
+            <p class="text-xl md:text-3xl mb-12 text-slate-200 font-light tracking-wide max-w-3xl mx-auto" data-key="hero_p">
+                成立于布达佩斯，构建中国非遗走向欧洲的新平台
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button class="bg-eccdf-gold text-eccdf-blue px-8 py-3 rounded font-bold">了解项目</button>
-                <button class="border border-white px-8 py-3 rounded font-bold">我们的使命</button>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button class="bg-eccdf-gold text-eccdf-blue px-10 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition transform hover:scale-105 shadow-lg" data-key="btn_explore">
+                    了解“承韵坊”
+                </button>
+                <button class="border-2 border-white/60 backdrop-blur-sm px-10 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-eccdf-blue transition shadow-lg" data-key="btn_mission">
+                    我们的使命
+                </button>
             </div>
         </div>
     </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="text-eccdf-gold font-bold tracking-widest uppercase" data-key="about_sub">WHO WE ARE</span>
+                <h2 class="text-4xl font-bold text-eccdf-blue mt-4 mb-6" data-key="about_h2">立足多瑙河畔，传播中华文化</h2>
+                <p class="text-slate-600 leading-relaxed mb-4" data-key="about_p1">欧中合作发展基金会成立于匈牙利首都布达佩斯。我们致力于推动中国与欧洲在文化、教育、艺术及非物质文化遗产领域的深度合作。</p>
+                <p class="text-slate-600 leading-relaxed" data-key="about_p2">作为中东欧地区中国非遗传播的重要平台，我们通过“承韵坊”等在地实践空间，让欧洲民众近距离感受中国传统文化的魅力。</p>
+            </div>
+            <div class="bg-slate-100 p-4 rounded-2xl shadow-inner border border-slate-200">
+                <img src="https://picsum.photos/seed/culture/800/600" alt="Culture" class="rounded-xl shadow-lg w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const translations = {
+            zh: {
+                nav_title: "欧中合作发展基金会",
+                nav_contact: "联系我们",
+                hero_h1: "让世界看见<span class='text-eccdf-gold'>中国非遗</span>",
+                hero_p: "成立于布达佩斯，构建中国非遗走向欧洲的新平台",
+                btn_explore: "了解“承韵坊”",
+                btn_mission: "我们的使命",
+                about_sub: "了解我们",
+                about_h2: "立足多瑙河畔，传播中华文化",
+                about_p1: "欧中合作发展基金会成立于匈牙利首都布达佩斯。我们致力于推动中国与欧洲在文化、教育、艺术及非物质文化遗产领域的深度合作。",
+                about_p2: "作为中东欧地区中国非遗传播的重要平台，我们通过“承韵坊”等在地实践空间，让欧洲民众近距离感受中国传统文化的魅力。"
+            },
+            en: {
+                nav_title: "ECCDF",
+                nav_contact: "Contact Us",
+                hero_h1: "Let the World See <span class='text-eccdf-gold'>Chinese Intangible Heritage</span>",
+                hero_p: "Based in Budapest, Building a New Platform for Chinese Culture in Europe",
+                btn_explore: "Discover 'Chengyunfang'",
+                btn_mission: "Our Mission",
+                about_sub: "WHO WE ARE",
+                about_h2: "On the Danube, Bridging Cultures",
+                about_p1: "ECCDF was established in Budapest, Hungary. We are dedicated to promoting cooperation between China and Europe in culture, education, arts, and ICH.",
+                about_p2: "As a key platform in CEE, we provide immersive cultural experiences through spaces like 'Chengyunfang'."
+            },
+            hu: {
+                nav_title: "Európa–Kína Alapítvány",
+                nav_contact: "Kapcsolat",
+                hero_h1: "Ismerje meg a világ a <span class='text-eccdf-gold'>kínai szellemi örökséget</span>",
+                hero_p: "Budapesti székhelyű alapítványunk új platformot teremt Európában",
+                btn_explore: "Ismerje meg a 'Chengyunfang'-ot",
+                btn_mission: "Küldetésünk",
+                about_sub: "KIK VAGYUNK",
+                about_h2: "A Dunánál, Kultúrákat Összekötve",
+                about_p1: "Az ECCDF Budapesten, Magyarországon alakult. Célunk Kína és Európa közötti együttműködés elősegítése a kultúra, oktatás és művészet területén.",
+                about_p2: "A közép-kelet-európai régió kulcsfontosságú platformjaként imerzív élményeket kínálunk a 'Chengyunfang' révén."
+            }
+        };
+
+        function switchLang(lang) {
+            // 1. 更新所有带有 data-key 属性的元素
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // 2. 更新按钮激活状态样式
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('lang-btn-active');
+            });
+            document.getElementById(`btn-${lang}`).classList.add('lang-btn-active');
+            
+            // 3. 设置 HTML 语言属性
+            document.documentElement.lang = lang;
+        }
+    </script>
 </body>
 </html>
