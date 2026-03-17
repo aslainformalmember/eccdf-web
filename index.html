@@ -41,46 +41,45 @@
             color: white;
         }
 
+        /* 针对 Hero 区域的背景配置 */
+        .hero-bg-custom {
+            background-image: url('203.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 添加深蓝色遮罩 */
+        .hero-bg-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 25, 47, 0.9) 0%,
+                rgba(10, 25, 47, 0.7) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
         /* Animations */
         .fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
         }
-/* 针对 Hero 区域的背景配置 */
-.hero-bg-custom {
-    /* 使用你上传的多瑙河图片文件名 */
-    background-image: url('203.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-/* 添加深蓝色遮罩，确保文字清晰度 */
-.hero-bg-custom::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* 使用深蓝色渐变，呼应基金会色调 */
-    background: linear-gradient(
-        135deg,
-        rgba(15, 23, 42, 0.9) 0%,   /* 左上角深蓝 */
-        rgba(15, 23, 42, 0.7) 100%  /* 右下角透出夜景 */
-    );
-    z-index: 1;
-}
-
-/* 确保内容在遮罩之上 */
-.hero-content {
-    position: relative;
-    z-index: 10;
-}
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -103,7 +102,6 @@
             transform: translateY(0);
         }
 
-        /* Mobile Menu Transition */
         #mobile-menu {
             max-height: 0;
             overflow: hidden;
@@ -112,7 +110,7 @@
         }
 
         #mobile-menu.open {
-            max-height: 400px;
+            max-height: 500px;
             opacity: 1;
         }
     </style>
@@ -123,30 +121,19 @@
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
-               <div class="w-12 h-12 flex items-center justify-center overflow-hidden">
-    <img src="logo.png" alt="Logo" class="w-full h-full object-contain">
-</div>
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 flex items-center justify-center overflow-hidden">
+                        <img src="logo.png" alt="Logo" class="w-full h-full object-contain">
+                    </div>
                     <span class="text-eccdf-blue font-serif text-lg tracking-wider hidden md:block" data-t="nav_title">欧中合作发展基金会</span>
                 </div>
-</nav>
 
-<section class="hero-bg-custom">
-    <div class="hero-content px-4 fade-in-up">
-        <h1 class="text-5xl md:text-7xl font-bold text-white selection-gold">
-            让世界看见中国非遗
-        </h1>
-        <p class="text-xl mt-6 text-slate-200">
-            —— 构建中国非遗走向欧洲的新平台
-        </p>
-    </div>
-</section>
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#about" class="text-slate-600 hover:text-eccdf-gold transition-colors text-sm font-medium" data-t="nav_about">关于我们</a>
                     <a href="#mission" class="text-slate-600 hover:text-eccdf-gold transition-colors text-sm font-medium" data-t="nav_mission">时代使命</a>
                     <a href="#projects" class="text-slate-600 hover:text-eccdf-gold transition-colors text-sm font-medium" data-t="nav_projects">实践空间</a>
                     
-                    <!-- Language Switcher -->
                     <div class="flex bg-slate-100 rounded-full px-1 py-1 text-xs border border-slate-200">
                         <button onclick="setLanguage('zh')" id="lang-zh" class="lang-btn px-3 py-1.5 rounded-full transition-all uppercase font-bold">zh</button>
                         <button onclick="setLanguage('en')" id="lang-en" class="lang-btn px-3 py-1.5 rounded-full transition-all uppercase font-bold">en</button>
@@ -183,17 +170,8 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-eccdf-blue">
-        <div class="absolute inset-0 z-0">
-            <img 
-                src="https://images.unsplash.com/photo-1565426965680-442b71903012?auto=format&fit=crop&w=1920&q=80" 
-                alt="Széchenyi Chain Bridge Night View" 
-                class="w-full h-full object-cover opacity-60 brightness-[0.8] contrast-[1.1]"
-            >
-            <div class="absolute inset-0 bg-gradient-to-b from-eccdf-blue/80 via-eccdf-blue/20 to-eccdf-blue"></div>
-        </div>
-
-        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center fade-in-up">
+    <section class="hero-bg-custom">
+        <div class="hero-content max-w-5xl mx-auto px-4 text-center fade-in-up">
             <h1 class="text-white text-4xl md:text-7xl font-bold mb-6 leading-tight" data-t="hero_h1">让世界看见中国非遗</h1>
             <p class="text-eccdf-gold text-xl md:text-3xl mb-8 font-serif italic" data-t="hero_p">—— 构建中国非遗走向欧洲的新平台</p>
             <p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto mb-12 font-light leading-relaxed" data-t="hero_desc">成立于布达佩斯，致力于推动中国与欧洲在文化、教育领域的合作，是中东欧地区中国非遗传播的重要平台。</p>
@@ -242,7 +220,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
                 <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-100 group reveal">
                     <div class="w-16 h-16 bg-eccdf-blue rounded-2xl flex items-center justify-center text-eccdf-gold mb-8 group-hover:bg-eccdf-gold group-hover:text-eccdf-blue transition-colors">
                         <i data-lucide="globe" class="w-8 h-8"></i>
@@ -250,7 +227,6 @@
                     <h3 class="text-xl font-bold text-eccdf-blue mb-4" data-t="mission_card1_t">文化窗口</h3>
                     <p class="text-slate-600 leading-relaxed" data-t="mission_card1_d">让中国非遗成为世界理解中国的重要窗口，承载中华民族数千年的智慧与审美。</p>
                 </div>
-                <!-- Card 2 -->
                 <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-100 group reveal">
                     <div class="w-16 h-16 bg-eccdf-blue rounded-2xl flex items-center justify-center text-eccdf-gold mb-8 group-hover:bg-eccdf-gold group-hover:text-eccdf-blue transition-colors">
                         <i data-lucide="users" class="w-8 h-8"></i>
@@ -258,7 +234,6 @@
                     <h3 class="text-xl font-bold text-eccdf-blue mb-4" data-t="mission_card2_t">社会融入</h3>
                     <p class="text-slate-600 leading-relaxed" data-t="mission_card2_d">推动中国非遗在欧洲实现从‘展示传播’到‘社会融入’的转变，让非遗走进欧洲社会。</p>
                 </div>
-                <!-- Card 3 -->
                 <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-100 group reveal">
                     <div class="w-16 h-16 bg-eccdf-blue rounded-2xl flex items-center justify-center text-eccdf-gold mb-8 group-hover:bg-eccdf-gold group-hover:text-eccdf-blue transition-colors">
                         <i data-lucide="heart" class="w-8 h-8"></i>
@@ -310,87 +285,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 reveal">
-                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-4">
-                    <div class="text-eccdf-gold"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
-                    <span class="font-bold text-eccdf-blue" data-t="act_1">非遗手作体验</span>
-                </div>
-                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-4">
-                    <div class="text-eccdf-gold"><i data-lucide="book-open" class="w-6 h-6"></i></div>
-                    <span class="font-bold text-eccdf-blue" data-t="act_2">文化讲座与展览</span>
-                </div>
-                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-4">
-                    <div class="text-eccdf-gold"><i data-lucide="globe" class="w-6 h-6"></i></div>
-                    <span class="font-bold text-eccdf-blue" data-t="act_3">中欧交流活动</span>
-                </div>
-                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-4">
-                    <div class="text-eccdf-gold"><i data-lucide="shield" class="w-6 h-6"></i></div>
-                    <span class="font-bold text-eccdf-blue" data-t="act_4">社区文化公益</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Core Advantages Section -->
-    <section class="py-24 bg-eccdf-blue text-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-eccdf-gold/5 -skew-x-12 transform translate-x-1/2"></div>
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <h2 class="text-3xl md:text-4xl font-serif mb-8" data-t="adv_h2">我们的核心优势</h2>
-                    <p class="text-white/60 mb-12 text-lg" data-t="adv_p">与传统短期文化交流活动不同，我们致力于构建一个长期可持续的中国非遗国际传播生态。</p>
-                    
-                    <div class="space-y-8">
-                        <div class="flex gap-6">
-                            <div class="flex-shrink-0 w-12 h-12 rounded-full border border-eccdf-gold/30 flex items-center justify-center text-eccdf-gold">
-                                <i data-lucide="map-pin" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2" data-t="adv_1_t">欧洲在地文化运营能力</h4>
-                                <p class="text-white/50" data-t="adv_1_d">基金会总部位于布达佩斯，长期深耕中东欧文化合作网络。</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="flex-shrink-0 w-12 h-12 rounded-full border border-eccdf-gold/30 flex items-center justify-center text-eccdf-gold">
-                                <i data-lucide="users" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2" data-t="adv_2_t">政府与文化机构合作网络</h4>
-                                <p class="text-white/50" data-t="adv_2_d">与中国驻匈牙利使馆体系、中国文化中心以及欧洲文化机构建立深度合作。</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="flex-shrink-0 w-12 h-12 rounded-full border border-eccdf-gold/30 flex items-center justify-center text-eccdf-gold">
-                                <i data-lucide="sparkles" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2" data-t="adv_3_t">文化与经贸融合路径</h4>
-                                <p class="text-white/50" data-t="adv_3_d">通过非遗文化促进中国企业与当地社会建立文化理解与社会信任。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4 reveal">
-                    <div class="space-y-4 pt-12">
-                        <div class="rounded-2xl overflow-hidden aspect-[3/4] shadow-2xl">
-                            <img src="https://picsum.photos/seed/advantage1/600/800" alt="Advantage 1" class="w-full h-full object-cover">
-                        </div>
-                        <div class="rounded-2xl overflow-hidden aspect-square shadow-2xl">
-                            <img src="https://picsum.photos/seed/advantage2/600/600" alt="Advantage 2" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="rounded-2xl overflow-hidden aspect-square shadow-2xl">
-                            <img src="https://picsum.photos/seed/advantage3/600/600" alt="Advantage 3" class="w-full h-full object-cover">
-                        </div>
-                        <div class="rounded-2xl overflow-hidden aspect-[3/4] shadow-2xl">
-                            <img src="https://picsum.photos/seed/advantage4/600/800" alt="Advantage 4" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -405,38 +299,23 @@
                         </div>
                         <span class="text-white font-serif text-xl tracking-wider" data-t="nav_title">欧中合作发展基金会</span>
                     </div>
-                    <p class="text-white/60 leading-relaxed" data-t="footer_desc">
-                        致力于构建中国非遗走向欧洲的新平台，让文明的传播不只是展示，更是相遇。
-                    </p>
+                    <p class="text-white/60 leading-relaxed" data-t="footer_desc">致力于构建中国非遗走向欧洲的新平台。</p>
                 </div>
-                
                 <div>
                     <h4 class="text-eccdf-gold font-bold mb-8 uppercase tracking-widest text-sm" data-t="footer_contact">联系我们</h4>
                     <ul class="space-y-4 text-white/60">
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="map-pin" class="w-5 h-5 text-eccdf-gold"></i>
-                            Budapest, Hungary
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="globe" class="w-5 h-5 text-eccdf-gold"></i>
-                            eurochinafoundation.com
-                        </li>
+                        <li class="flex items-center gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-eccdf-gold"></i> Budapest, Hungary</li>
+                        <li class="flex items-center gap-3"><i data-lucide="globe" class="w-5 h-5 text-eccdf-gold"></i> eurochinafoundation.com</li>
                     </ul>
                 </div>
-
                 <div>
                     <h4 class="text-eccdf-gold font-bold mb-8 uppercase tracking-widest text-sm" data-t="footer_follow">关注我们</h4>
                     <div class="flex gap-4">
-                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-eccdf-gold hover:text-eccdf-blue transition-all cursor-pointer">
-                            <i data-lucide="users" class="w-5 h-5"></i>
-                        </div>
-                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-eccdf-gold hover:text-eccdf-blue transition-all cursor-pointer">
-                            <i data-lucide="globe" class="w-5 h-5"></i>
-                        </div>
+                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-eccdf-gold hover:text-eccdf-blue transition-all cursor-pointer"><i data-lucide="users" class="w-5 h-5"></i></div>
+                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-eccdf-gold hover:text-eccdf-blue transition-all cursor-pointer"><i data-lucide="globe" class="w-5 h-5"></i></div>
                     </div>
                 </div>
             </div>
-            
             <div class="pt-8 border-t border-white/10 text-center text-white/40 text-sm">
                 <p>© 2026 <span data-t="nav_title">欧中合作发展基金会</span>. All Rights Reserved.</p>
             </div>
@@ -446,227 +325,74 @@
     <script>
         const translations = {
             zh: {
-                nav_about: "关于我们",
-                nav_mission: "时代使命",
-                nav_projects: "实践空间",
-                nav_contact: "联系我们",
-                nav_title: "欧中合作发展基金会",
-                hero_h1: "让世界看见中国非遗",
-                hero_p: "—— 构建中国非遗走向欧洲的新平台",
-                hero_desc: "成立于布达佩斯，致力于推动中国与欧洲在文化、教育领域的合作，是中东欧地区中国非遗传播的重要平台。",
-                btn_explore: "了解项目",
-                btn_mission: "我们的使命",
-                about_tag: "关于我们",
-                about_h2: "文化，是人与人之间最柔软却最持久的连接",
-                about_p1: "在人类文明交流互鉴不断深化的今天，中国非物质文化遗产正承担着新的时代使命。它不仅是中华文明的历史记忆，更是中国文化走向世界的重要语言。",
-                about_p2: "在欧洲多瑙河畔，一座连接中国非遗与欧洲社会的文化平台正在逐渐形成。我们以文化为桥梁，以社会交流为基础，推动中国非遗在欧洲实现从“展示传播”到“社会融入”的转变。",
-                about_footer: "中东欧地区中国非遗文化传播的重要平台",
-                about_quote: "“中国非遗承载着中华民族数千年的智慧与审美，是中国文化最具生命力的表达方式之一。”",
-                mission_h2: "我们的时代使命",
-                mission_card1_t: "文化窗口",
-                mission_card1_d: "让中国非遗成为世界理解中国的重要窗口，承载中华民族数千年的智慧与审美。",
-                mission_card2_t: "社会融入",
-                mission_card2_d: "推动中国非遗在欧洲实现从‘展示传播’到‘社会融入’的转变，让非遗走进欧洲社会。",
-                mission_card3_t: "文化纽带",
-                mission_card3_d: "让文化交流成为中欧关系的重要纽带，促进中欧文明之间更加平等与深入的交流。",
-                practice_h2: "我们的文化实践平台",
-                practice_tag: "China ICH In-situ Communication Base",
-                practice_title: "“承韵坊” 实践空间",
-                practice_desc: "基金会旗下文化项目 “承韵坊” 是中国非遗在欧洲的重要实践空间。位于布达佩斯，是一个以中国非遗为核心的文化传播与体验中心。",
-                practice_item1: "可体验的文化传播：让欧洲公众亲身感受手工艺魅力",
-                practice_item2: "在地传播基地：让非遗成为一种可触摸的生活文化",
-                btn_map: "查看地图",
-                btn_book: "预约体验",
-                act_1: "非遗手作体验",
-                act_2: "文化讲座与展览",
-                act_3: "中欧交流活动",
-                act_4: "社区文化公益",
-                adv_h2: "我们的核心优势",
-                adv_p: "与传统短期文化交流活动不同，我们致力于构建一个长期可持续的中国非遗国际传播生态。",
-                adv_1_t: "欧洲在地文化运营能力",
-                adv_1_d: "基金会总部位于布达佩斯，长期深耕中东欧文化合作网络。",
-                adv_2_t: "政府与文化机构合作网络",
-                adv_2_d: "与中国驻匈牙利使馆体系、中国文化中心以及欧洲文化机构建立深度合作。",
-                adv_3_t: "文化与经贸融合路径",
-                adv_3_d: "通过非遗文化促进中国企业与当地社会建立文化理解与社会信任。",
-                footer_desc: "致力于构建中国非遗走向欧洲的新平台，让文明的传播不只是展示，更是相遇。",
-                footer_contact: "联系我们",
-                footer_follow: "关注我们",
+                nav_about: "关于我们", nav_mission: "时代使命", nav_projects: "实践空间", nav_contact: "联系我们", nav_title: "欧中合作发展基金会",
+                hero_h1: "让世界看见中国非遗", hero_p: "—— 构建中国非遗走向欧洲的新平台", hero_desc: "成立于布达佩斯，致力于推动中国与欧洲在文化、教育领域的合作。",
+                btn_explore: "了解项目", btn_mission: "我们的使命", about_tag: "关于我们", about_h2: "文化，是人与人之间最柔软却最持久的连接",
+                about_p1: "在人类文明交流互鉴不断深化的今天，中国非物质文化遗产正承担着新的时代使命。", about_p2: "在欧洲多瑙河畔，一座连接中国非遗与欧洲社会的文化平台正在逐渐形成。",
+                about_footer: "中东欧地区中国非遗文化传播的重要平台", about_quote: "“中国非遗承载着中华民族数千年的智慧与审美。”",
+                mission_h2: "我们的时代使命", mission_card1_t: "文化窗口", mission_card1_d: "让中国非遗成为世界理解中国的重要窗口。",
+                mission_card2_t: "社会融入", mission_card2_d: "推动中国非遗在欧洲实现从‘展示传播’到‘社会融入’的转变。",
+                mission_card3_t: "文化纽带", mission_card3_d: "让文化交流成为中欧关系的重要纽带。",
+                practice_h2: "我们的文化实践平台", practice_tag: "China ICH In-situ Communication Base", practice_title: "“承韵坊” 实践空间",
+                practice_desc: "位于布达佩斯，是一个以中国非遗为核心的文化传播与体验中心。", practice_item1: "可体验的文化传播", practice_item2: "在地传播基地",
+                btn_map: "查看地图", btn_book: "预约体验", footer_desc: "致力于构建中国非遗走向欧洲的新平台。", footer_contact: "联系我们", footer_follow: "关注我们"
             },
             en: {
-                nav_about: "About",
-                nav_mission: "Mission",
-                nav_projects: "Projects",
-                nav_contact: "Contact",
-                nav_title: "ECCDF",
-                hero_h1: "Let the World See Chinese Intangible Heritage",
-                hero_p: "A New Platform Connecting Chinese Culture to Europe",
-                hero_desc: "Established in Budapest, dedicated to promoting cooperation between China and Europe in culture and education.",
-                btn_explore: "Explore Projects",
-                btn_mission: "Our Mission",
-                about_tag: "About Us",
-                about_h2: "Culture: The Softest Yet Most Lasting Connection",
-                about_p1: "In today's deepening global civilization exchange, Chinese intangible cultural heritage carries a new mission of the era.",
-                about_p2: "On the banks of the Danube, a cultural platform connecting Chinese heritage with European society is gradually forming.",
-                about_footer: "A key platform for Chinese heritage in Central and Eastern Europe",
-                about_quote: "“Chinese heritage carries thousands of years of wisdom and aesthetics, a vital expression of Chinese culture.”",
-                mission_h2: "Our Mission of the Era",
-                mission_card1_t: "Cultural Window",
-                mission_card1_d: "Making Chinese heritage a key window for the world to understand China's wisdom and aesthetics.",
-                mission_card2_t: "Social Integration",
-                mission_card2_d: "Promoting the transition from 'display' to 'social integration' of Chinese heritage in Europe.",
-                mission_card3_t: "Cultural Bond",
-                mission_card3_d: "Making cultural exchange a vital bond in China-Europe relations for deeper dialogue.",
-                practice_h2: "Our Cultural Practice Platform",
-                practice_tag: "China ICH In-situ Communication Base",
-                practice_title: "“Cheng Yun Fang” Practice Space",
-                practice_desc: "A flagship project in Budapest, serving as a center for experiencing and communicating Chinese heritage.",
-                practice_item1: "Experiential Communication: Letting the public feel the charm of craftsmanship.",
-                practice_item2: "In-situ Base: Making heritage a touchable living culture.",
-                btn_map: "View Map",
-                btn_book: "Book Experience",
-                act_1: "Handicraft Workshops",
-                act_2: "Lectures & Exhibitions",
-                act_3: "Cultural Exchange",
-                act_4: "Community Welfare",
-                adv_h2: "Our Core Advantages",
-                adv_p: "Unlike short-term activities, we build a long-term sustainable international communication ecosystem.",
-                adv_1_t: "Local Cultural Operations",
-                adv_1_d: "Headquartered in Budapest, deeply rooted in the CEE cultural cooperation network.",
-                adv_2_t: "Institutional Network",
-                adv_2_d: "Cooperation with embassies, cultural centers, and European cultural institutions.",
-                adv_3_t: "Culture & Economy Integration",
-                adv_3_d: "Building social trust and understanding through cultural heritage.",
-                footer_desc: "Building a new platform for Chinese heritage in Europe, where communication is an encounter.",
-                footer_contact: "Contact Us",
-                footer_follow: "Follow Us",
+                nav_about: "About", nav_mission: "Mission", nav_projects: "Projects", nav_contact: "Contact", nav_title: "ECCDF",
+                hero_h1: "Let the World See Chinese Heritage", hero_p: "A New Platform Connecting Chinese Culture to Europe", hero_desc: "Established in Budapest, dedicated to promoting cooperation between China and Europe.",
+                btn_explore: "Explore Projects", btn_mission: "Our Mission", about_tag: "About Us", about_h2: "Culture: The Softest Yet Most Lasting Connection",
+                about_p1: "Chinese intangible cultural heritage carries a new mission of the era.", about_p2: "On the banks of the Danube, a cultural platform is gradually forming.",
+                about_footer: "Key platform for Chinese heritage in CEE", about_quote: "“Chinese heritage carries thousands of years of wisdom.”",
+                mission_h2: "Our Mission", mission_card1_t: "Cultural Window", mission_card1_d: "Making Chinese heritage a key window for the world.",
+                mission_card2_t: "Social Integration", mission_card2_d: "Promoting the transition from 'display' to 'social integration'.",
+                mission_card3_t: "Cultural Bond", mission_card3_d: "Making cultural exchange a vital bond.",
+                practice_h2: "Our Cultural Practice Platform", practice_tag: "China ICH In-situ Communication Base", practice_title: "“Cheng Yun Fang” Space",
+                practice_desc: "A center for experiencing and communicating Chinese heritage in Budapest.", practice_item1: "Experiential Communication", practice_item2: "In-situ Base",
+                btn_map: "View Map", btn_book: "Book Experience", footer_desc: "Building a new platform for Chinese heritage in Europe.", footer_contact: "Contact Us", footer_follow: "Follow Us"
             },
             hu: {
-                nav_about: "Rólunk",
-                nav_mission: "Küldetés",
-                nav_projects: "Projektek",
-                nav_contact: "Kapcsolat",
-                nav_title: "Európa–Kína Alapítvány",
-                hero_h1: "Ismerje meg a világ a kínai szellemi örökséget",
-                hero_p: "Új platform a kínai kultúra és Európa között",
-                hero_desc: "Budapesten alapítva, a kínai és európai kulturális és oktatási együttműködés előmozdítására.",
-                btn_explore: "Projektek",
-                btn_mission: "Küldetésünk",
-                about_tag: "Rólunk",
-                about_h2: "A kultúra a legpuhább, mégis legtartósabb kapcsolat",
-                about_p1: "A globális civilizációs csere mélyülésével a kínai szellemi örökség új korszakos küldetést hordoz.",
-                about_p2: "A Duna partján fokozatosan formálódik egy kulturális platform, amely összeköti a kínai örökséget az európai társadalommal.",
-                about_footer: "Közép- és Kelet-Európa kulcsfontosságú platformja",
-                about_quote: "„A kínai örökség évezredes bölcsességet és esztétikát hordoz, a kínai kultúra életerős kifejezése.”",
-                mission_h2: "Korszakos Küldetésünk",
-                mission_card1_t: "Kulturális Ablak",
-                mission_card1_d: "A kínai örökség a világ számára kulcsfontosságú ablak Kína bölcsességének megértéséhez.",
-                mission_card2_t: "Társadalmi Integráció",
-                mission_card2_d: "A kínai örökség európai „bemutatásától” a „társadalmi integrációjáig” való átmenet elősegítése.",
-                mission_card3_t: "Kulturális Kötelék",
-                mission_card3_d: "A kulturális csere az Európa-Kína kapcsolatok létfontosságú kötelékévé tétele.",
-                practice_h2: "Kulturális Gyakorlati Platformunk",
-                practice_tag: "China ICH In-situ Communication Base",
-                practice_title: "„Cheng Yun Fang” Gyakorlati Tér",
-                practice_desc: "Egy budapesti zászlóshajó projekt, amely a kínai örökség megélésének és kommunikációjának központja.",
-                practice_item1: "Tapasztalati Kommunikáció: A kézművesség varázsának átélése.",
-                practice_item2: "Helyszíni Bázis: Az örökség érinthető élő kultúrává tétele.",
-                btn_map: "Térkép",
-                btn_book: "Foglalás",
-                act_1: "Kézműves Workshopok",
-                act_2: "Előadások és Kiállítások",
-                act_3: "Kulturális Csere",
-                act_4: "Közösségi Jólét",
-                adv_h2: "Alapvető Előnyeink",
-                adv_p: "A rövid távú tevékenységekkel ellentétben hosszú távú fenntartható kommunikációs ökoszisztémát építünk.",
-                adv_1_t: "Helyi Kulturális Operációk",
-                adv_1_d: "Budapesti székhely, mély gyökerek a KKE kulturális együttműködési hálózatában.",
-                adv_2_t: "Intézményi Hálózat",
-                adv_2_d: "Együttműködés nagykövetségekkel és európai kulturális intézményekkel.",
-                adv_3_t: "Kultúra és Gazdaság Integrációja",
-                adv_3_d: "Társadalmi bizalom and megértés építése a kulturális örökségen keresztül.",
-                footer_desc: "Új platform építése a kínai örökség számára Európában, ahol a kommunikáció találkozás.",
-                footer_contact: "Kapcsolat",
-                footer_follow: "Kövessen Minket",
+                nav_about: "Rólunk", nav_mission: "Küldetés", nav_projects: "Projektek", nav_contact: "Kapcsolat", nav_title: "Európa–Kína Alapítvány",
+                hero_h1: "Ismerje meg a világ a kínai örökséget", hero_p: "Új platform a kínai kultúra és Európa között", hero_desc: "Budapesten alapítva, a kínai és európai kulturális együttműködésért.",
+                btn_explore: "Projektek", btn_mission: "Küldetésünk", about_tag: "Rólunk", about_h2: "A kultúra a legpuhább, mégis legtartósabb kapcsolat",
+                about_p1: "A kínai szellemi örökség új korszakos küldetést hordoz.", about_p2: "A Duna partján fokozatosan formálódik egy kulturális platform.",
+                about_footer: "Közép- és Kelet-Európa kulcsfontosságú platformja", about_quote: "„A kínai örökség évezredes bölcsességet hordoz.”",
+                mission_h2: "Korszakos Küldetésünk", mission_card1_t: "Kulturális Ablak", mission_card1_d: "A kínai örökség ablak a világ számára.",
+                mission_card2_t: "Társadalmi Integráció", mission_card2_d: "A kínai örökség európai társadalmi integrációjáig való átmenet.",
+                mission_card3_t: "Kulturális Kötelék", mission_card3_d: "A kulturális csere az Európa-Kína kapcsolatok köteléke.",
+                practice_h2: "Kulturális Gyakorlati Platformunk", practice_tag: "China ICH In-situ Communication Base", practice_title: "„Cheng Yun Fang” Gyakorlati Tér",
+                practice_desc: "A kínai örökség megélésének központja Budapesten.", practice_item1: "Tapasztalati Kommunikáció", practice_item2: "Helyszíni Bázis",
+                btn_map: "Térkép", btn_book: "Foglalás", footer_desc: "Új platform építése a kínai örökség számára Európában.", footer_contact: "Kapcsolat", footer_follow: "Kövessen Minket"
             }
         };
 
-        let currentLang = 'zh';
-
         function setLanguage(lang) {
-            currentLang = lang;
             document.documentElement.lang = lang;
-            
-            // Update Text Content
             document.querySelectorAll('[data-t]').forEach(el => {
                 const key = el.getAttribute('data-t');
-                if (translations[lang][key]) {
-                    el.innerText = translations[lang][key];
-                }
+                if (translations[lang][key]) el.innerText = translations[lang][key];
             });
-
-            // Update Active Button Styles
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                const btnLang = btn.id.replace('lang-', '');
-                if (btnLang === lang) {
-                    btn.classList.add('bg-eccdf-gold', 'text-eccdf-blue', 'shadow-sm');
-                    btn.classList.remove('text-slate-500', 'hover:text-slate-800');
-                } else {
-                    btn.classList.remove('bg-eccdf-gold', 'text-eccdf-blue', 'shadow-sm');
-                    btn.classList.add('text-slate-500', 'hover:text-slate-800');
-                }
-            });
-
-            document.querySelectorAll('.m-lang-btn').forEach(btn => {
-                const btnLang = btn.id.replace('m-lang-', '');
-                if (btnLang === lang) {
-                    btn.classList.add('bg-eccdf-gold', 'text-eccdf-blue');
-                    btn.classList.remove('bg-slate-100', 'text-slate-500');
-                } else {
-                    btn.classList.remove('bg-eccdf-gold', 'text-eccdf-blue');
-                    btn.classList.add('bg-slate-100', 'text-slate-500');
-                }
+                btn.classList.toggle('bg-eccdf-gold', btn.id === `lang-${lang}`);
+                btn.classList.toggle('text-eccdf-blue', btn.id === `lang-${lang}`);
             });
         }
 
-        // Mobile Menu Toggle
-        let isMenuOpen = false;
         function toggleMenu() {
-            isMenuOpen = !isMenuOpen;
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('menu-icon');
-            
-            if (isMenuOpen) {
-                menu.classList.add('open');
-                icon.setAttribute('data-lucide', 'x');
-            } else {
-                menu.classList.remove('open');
-                icon.setAttribute('data-lucide', 'menu');
-            }
+            menu.classList.toggle('open');
+            icon.setAttribute('data-lucide', menu.classList.contains('open') ? 'x' : 'menu');
             lucide.createIcons();
         }
 
-        // Reveal on Scroll
         function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
+            document.querySelectorAll(".reveal").forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 150) el.classList.add("active");
+            });
         }
 
         window.addEventListener("scroll", reveal);
-
-        // Initialize
-        window.onload = () => {
-            setLanguage('zh');
-            lucide.createIcons();
-            reveal();
-        };
+        window.onload = () => { setLanguage('zh'); lucide.createIcons(); reveal(); };
     </script>
 </body>
 </html>
