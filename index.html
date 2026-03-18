@@ -123,7 +123,7 @@
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-3">
                     <div class="w-12 h-12 flex items-center justify-center overflow-hidden">
-                        <img src="logo2.png" alt="Logo" class="w-full h-full object-contain">
+                        <img src="logo.png" alt="Logo" class="w-full h-full object-contain">
                     </div>
                     <span class="text-eccdf-blue font-serif text-lg tracking-wider hidden md:block" data-t="nav_title">欧中合作发展基金会</span>
                 </div>
@@ -140,7 +140,7 @@
                         <button onclick="setLanguage('hu')" id="lang-hu" class="lang-btn px-3 py-1.5 rounded-full transition-all uppercase font-bold">hu</button>
                     </div>
 
-                    <button class="bg-eccdf-blue text-white px-6 py-2 rounded-full hover:bg-slate-800 transition text-sm font-bold" data-t="nav_contact">
+                    <button onclick="scrollToSection('contact')" class="bg-eccdf-blue text-white px-6 py-2 rounded-full hover:bg-slate-800 active:scale-95 transition text-sm font-bold" data-t="nav_contact">
                         联系我们
                     </button>
                 </div>
@@ -157,9 +157,9 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden bg-white border-t border-slate-100">
             <div class="px-4 pt-2 pb-6 space-y-4">
-                <a href="#about" class="block text-slate-600 py-2" data-t="nav_about">关于我们</a>
-                <a href="#mission" class="block text-slate-600 py-2" data-t="nav_mission">时代使命</a>
-                <a href="#projects" class="block text-slate-600 py-2" data-t="nav_projects">实践空间</a>
+                <a href="#about" onclick="toggleMenu()" class="block text-slate-600 py-2" data-t="nav_about">关于我们</a>
+                <a href="#mission" onclick="toggleMenu()" class="block text-slate-600 py-2" data-t="nav_mission">时代使命</a>
+                <a href="#projects" onclick="toggleMenu()" class="block text-slate-600 py-2" data-t="nav_projects">实践空间</a>
                 <div class="flex gap-2 pt-4 border-t border-slate-100">
                     <button onclick="setLanguage('zh')" id="m-lang-zh" class="m-lang-btn text-xs px-4 py-2 rounded-full uppercase font-bold">zh</button>
                     <button onclick="setLanguage('en')" id="m-lang-en" class="m-lang-btn text-xs px-4 py-2 rounded-full uppercase font-bold">en</button>
@@ -177,8 +177,8 @@
             <p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto mb-12 font-light leading-relaxed" data-t="hero_desc">成立于布达佩斯，致力于推动中国与欧洲在文化、教育领域的合作，是中东欧地区中国非遗传播的重要平台。</p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <button class="px-10 py-4 bg-eccdf-gold text-eccdf-blue font-bold rounded-lg hover:bg-[#c5a02e] transition-all transform hover:scale-105 shadow-xl" data-t="btn_explore">了解项目</button>
-                <button class="px-10 py-4 border border-white/50 text-white font-bold rounded-lg hover:bg-white/10 transition-all backdrop-blur-sm" data-t="btn_mission">我们的使命</button>
+                <button onclick="scrollToSection('projects')" class="px-10 py-4 bg-eccdf-gold text-eccdf-blue font-bold rounded-lg hover:bg-[#c5a02e] active:scale-95 transition-all transform shadow-xl" data-t="btn_explore">了解项目</button>
+                <button onclick="scrollToSection('mission')" class="px-10 py-4 border border-white/50 text-white font-bold rounded-lg hover:bg-white/10 active:scale-95 transition-all backdrop-blur-sm" data-t="btn_mission">我们的使命</button>
             </div>
         </div>
     </section>
@@ -250,13 +250,14 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-20 reveal">
                 <h2 class="text-3xl md:text-4xl font-serif text-eccdf-blue mb-4" data-t="practice_h2">我们的文化实践平台</h2>
+                <p class="text-slate-500 tracking-widest uppercase text-sm" data-t="practice_tag">China ICH In-situ Communication Base</p>
             </div>
 
             <div class="flex flex-col lg:flex-row items-center gap-16 mb-32">
                 <div class="lg:w-1/2 reveal">
                     <div class="relative">
                         <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="chenegguifang11.jpg" alt="Cheng Yun Fang" class="w-full h-full object-cover">
+                            <img src="https://picsum.photos/seed/workshop/1200/800" alt="Cheng Yun Fang" class="w-full h-full object-cover">
                         </div>
                         <div class="absolute -top-6 -right-6 w-32 h-32 bg-eccdf-gold/10 rounded-full -z-10"></div>
                     </div>
@@ -275,10 +276,10 @@
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-4">
-                        <button class="px-8 py-3 bg-eccdf-blue text-white rounded-lg hover:bg-slate-800 transition-all flex items-center gap-2">
+                        <button onclick="openMap()" class="px-8 py-3 bg-eccdf-blue text-white rounded-lg hover:bg-slate-800 active:scale-95 transition-all flex items-center gap-2">
                             <i data-lucide="map-pin" class="w-4 h-4 text-eccdf-gold"></i> <span data-t="btn_map">查看地图</span>
                         </button>
-                        <button class="px-8 py-3 border border-eccdf-blue text-eccdf-blue rounded-lg hover:bg-slate-50 transition-all flex items-center gap-2">
+                        <button onclick="scrollToSection('contact')" class="px-8 py-3 border border-eccdf-blue text-eccdf-blue rounded-lg hover:bg-slate-50 active:scale-95 transition-all flex items-center gap-2">
                             <i data-lucide="calendar" class="w-4 h-4"></i> <span data-t="btn_book">预约体验</span>
                         </button>
                     </div>
@@ -369,7 +370,6 @@
             document.querySelectorAll('[data-t]').forEach(el => {
                 const key = el.getAttribute('data-t');
                 if (translations[lang][key]) {
-                    // 使用 innerHTML 以支持翻译中的 <span> 标签
                     el.innerHTML = translations[lang][key];
                 }
             });
@@ -385,6 +385,18 @@
             menu.classList.toggle('open');
             icon.setAttribute('data-lucide', menu.classList.contains('open') ? 'x' : 'menu');
             lucide.createIcons();
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function openMap() {
+            // 定位到布达佩斯
+            window.open('https://www.google.com/maps/place/Budapest,+Hungary', '_blank');
         }
 
         function reveal() {
