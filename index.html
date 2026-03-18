@@ -186,25 +186,36 @@
     <!-- About Section -->
     <section id="about" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="grid md:grid-cols-5 gap-16 items-center">
-                <div class="reveal">
-                    <div class="inline-block px-4 py-1 bg-eccdf-gold/10 text-eccdf-gold rounded-full text-sm font-bold mb-6 tracking-widest uppercase" data-t="about_tag">关于我们</div>
-                    <h2 class="text-4xl md:text-5xl font-serif text-eccdf-blue mb-8 leading-tight" data-t="about_h2">文化，是人与人之间最柔软却最持久的连接</h2>
-                    <p class="text-slate-600 text-lg leading-relaxed mb-8" data-t="about_p1">在人类文明交流互鉴不断深化的今天，中国非物质文化遗产正承担着新的时代使命。它不仅是中华文明的历史记忆，更是中国文化走向世界的重要语言。</p>
-                    <p class="text-slate-600 text-lg leading-relaxed mb-8" data-t="about_p2">在欧洲多瑙河畔，一座连接中国非遗与欧洲社会的文化平台正在逐渐形成。我们以文化为桥梁，以社会交流为基础，推动中国非遗在欧洲实现从“展示传播”到“社会融入”的转变。</p>
-                    <div class="flex items-center gap-4 text-eccdf-blue font-bold italic">
-                        <span class="w-12 h-[2px] bg-eccdf-gold"></span>
-                        <span data-t="about_footer">中东欧地区中国非遗文化传播的重要平台</span>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content Column -->
+                <div class="reveal space-y-10">
+                    <div>
+                        <div class="inline-block px-4 py-1 bg-eccdf-gold/10 text-eccdf-gold rounded-full text-sm font-bold mb-6 tracking-widest uppercase" data-t="about_tag">关于我们</div>
+                        <h2 class="text-4xl md:text-5xl font-serif text-eccdf-blue mb-8 leading-tight" data-t="about_h2">文化，是人与人之间最柔软却最持久的连接</h2>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-6" data-t="about_p1">在人类文明交流互鉴不断深化的今天，中国非物质文化遗产正承担着新的时代使命。它不仅是中华文明的历史记忆，更是中国文化走向世界的重要语言。</p>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-8" data-t="about_p2">在欧洲多瑙河畔，一座连接中国非遗与欧洲社会的文化平台正在逐渐形成。我们以文化为桥梁，以社会交流为基础，推动中国非遗在欧洲实现从“展示传播”到“社会融入”的转变。</p>
+                        
+                        <div class="flex items-center gap-4 text-eccdf-blue font-bold italic mb-10">
+                            <span class="w-12 h-[2px] bg-eccdf-gold"></span>
+                            <span data-t="about_footer">中东欧地区中国非遗文化传播的重要平台</span>
+                        </div>
+                    </div>
+
+                    <!-- Moved Quote Box: Now in the left column to avoid blocking the image -->
+                    <div class="bg-slate-50 p-8 rounded-2xl border-l-4 border-eccdf-gold shadow-sm">
+                        <i data-lucide="quote" class="text-eccdf-gold w-8 h-8 mb-4 opacity-50"></i>
+                        <p class="text-eccdf-blue text-base font-light italic leading-relaxed" data-t="about_quote">“中国非遗承载着中华民族数千年的智慧与审美，是中国文化最具生命力的表达方式之一。”</p>
                     </div>
                 </div>
                 
-                <div class="md:col-span-3 relative reveal">
-                    <div class="aspect-[6/3] rounded-2xl overflow-hidden shadow-2xl bg-slate-50">
-                        <img src="newyear6.jpg" alt="Culture Exchange" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -bottom-8 -left-8 bg-eccdf-blue p-8 rounded-2xl shadow-xl hidden lg:block max-w-xs">
-                        <i data-lucide="sparkles" class="text-eccdf-gold w-10 h-10 mb-4"></i>
-                        <p class="text-white text-sm font-light leading-relaxed" data-t="about_quote">“中国非遗承载着中华民族数千年的智慧与审美，是中国文化最具生命力的表达方式之一。”</p>
+                <!-- Right Image Column -->
+                <div class="reveal">
+                    <div class="relative">
+                        <div class="aspect-[6000/3368] rounded-2xl overflow-hidden shadow-2xl bg-slate-100">
+                            <img src="newyear6.jpg" alt="Culture Exchange" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Decorative element behind the image -->
+                        <div class="absolute -top-6 -right-6 w-32 h-32 bg-eccdf-gold/5 rounded-full -z-10"></div>
                     </div>
                 </div>
             </div>
